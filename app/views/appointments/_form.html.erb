@@ -1,0 +1,36 @@
+<%= form_for(@appointment) do |f| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% @appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
+    <%= f.label :name, "Available cars" %><br>
+    <%= f.collection_select :car_id, Car.all, :id, :number, :prompt => "Select a car" %>
+  </div>
+  <div class="field">
+    <%= f.label :hour %><br>
+    <%= f.time_select :hour %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :workplace_id %><br>
+    <%= f.collection_select :workplace_id, Workplace.all, :id, :number, :prompt => "Select a workplace"%>
+  </div>
+  <div class="field">
+    <%= f.label :name, "Appointments" %><br>
+    <%= f.collection_select :services, @services, :id, :name, :prompt => "Select a service" %> 
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

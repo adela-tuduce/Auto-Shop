@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_id: 1
+  hour: 2014-08-22 12:00:15
+  date: 2014-08-22
+  workplace_id: 1
+
+two:
+  car_id: 1
+  hour: 2014-08-22 12:00:15
+  date: 2014-08-22
+  workplace_id: 1

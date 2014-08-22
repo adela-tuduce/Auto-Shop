@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
   
+  resources :workplaces
+
+  resources :appointments
+
+  resources :services
+
+  resources :skills
+
+  resources :cars do
+    resources :clients
+  end
+
+  resources :mechanics
+
   get 'auto_shop/home'
   devise_for :users
   root 'auto_shop#home'
