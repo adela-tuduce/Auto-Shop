@@ -14,8 +14,8 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
-    @car = Car.new
-    @client = Car.clients.find(params[:id])
+    @client = Client.find(params[:client_id])
+    @car = @client.cars.build
   end
 
   # GET /cars/1/edit
@@ -25,7 +25,8 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @car = Car.new(car_params)
+    @client = Client.find(params[:client_id])
+    @car = @client.cars.build(params[:car_params])
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }

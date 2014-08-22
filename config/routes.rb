@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :skills
 
-  resources :cars do
-    resources :clients
+  resources :clients do
+    resources :cars
   end
 
   resources :mechanics
