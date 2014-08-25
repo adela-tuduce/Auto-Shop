@@ -44,3 +44,5 @@ gem 'spring',        group: :development
  gem 'better_errors'
  gem 'meta_request'
  gem 'binding_of_caller'
+ gem 'activeadmin', github: 'gregbell/active_admin'
+ gem 'cancancan', '~> 1.9'

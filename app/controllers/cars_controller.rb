@@ -4,12 +4,15 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
+    @client = Client.find(params[:client_id])
     @cars = Car.all
   end
 
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @client = Client.find(params[:client_id])
+
   end
 
   # GET /cars/new
@@ -20,12 +23,14 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+     @client = Client.find(params[:client_id])
+     @car = @client.cars.find(params[:id])
   end
 
   # POST /cars
   # POST /cars.json
   def create
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
     @car = @client.cars.build(params[:car_params])
     respond_to do |format|
       if @car.save

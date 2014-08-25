@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Back', clients_path %> |
+<%= link_to "Add a car!", new_client_car_path(@client) %>

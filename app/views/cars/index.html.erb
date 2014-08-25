@@ -18,9 +18,9 @@
         <td><%= car.client_id %></td>
         <td><%= car.make %></td>
         <td><%= car.model %></td>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', client_car_path(@client.id, car.id) %></td>
+        <td><%= link_to 'Edit', edit_client_car_path(@client, car.id) %></td>
+        <td><%= link_to 'Destroy',  client_car_path(@client.id, car.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
