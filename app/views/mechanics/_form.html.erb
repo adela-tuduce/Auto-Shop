@@ -24,8 +24,8 @@
     <%= f.number_field :experience %>
   </div>
   <div class="field">
-    <%= f.label :name, "Skills" %><br>
-    <%= select("Skills", "name", options_for_select(Skill.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a skill...'}) %>
+    <%= f.label :name, "Services" %><br>
+    <%= select("Services", "name", options_for_select(Service.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a service...'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

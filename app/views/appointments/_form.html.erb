@@ -28,7 +28,7 @@
   </div>
   <div class="field">
     <%= f.label :name, "Service" %><br>
-    <%= select("Skills", "name", options_for_select(Skill.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a skill...'}) %>
+    <%= select("Service", "name", options_for_select(Service.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a service...'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

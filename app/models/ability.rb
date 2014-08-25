@@ -17,7 +17,7 @@ class Ability
           can :manage, Car
           cannot :destroy, Client
           cannot :manage, Service
-          cannot :manage, Skill
+          cannot :manage, Service
           cannot :manage, Mechanic
         end
       end

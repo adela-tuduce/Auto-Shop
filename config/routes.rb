@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   resources :services
 
-  resources :skills
-
   resources :mechanics
 
   resources :clients do

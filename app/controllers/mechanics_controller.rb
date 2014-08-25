@@ -15,7 +15,7 @@ class MechanicsController < ApplicationController
   # GET /mechanics/new
   def new
     @mechanic = Mechanic.new
-    @skills = Skill.all
+    @services = Service.all
   end
 
   # GET /mechanics/1/edit

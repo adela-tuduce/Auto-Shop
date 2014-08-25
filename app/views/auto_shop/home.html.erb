@@ -1,5 +1,7 @@
 <h1>First Page Auto Shop</h1>
 
-<h2>Please sign in!</h2>
-<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
-<%= link_to "Sign in now!", new_user_session_path, class: "btn btn-large btn-primary" %>
+<% if current_user.nil? %>
+  <h2>Please sign in!</h2>
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-large btn-primary" %>
+  <%= link_to "Sign in now!", new_user_session_path, class: "btn btn-large btn-primary" %>
+<% end %>

@@ -6,5 +6,4 @@ class Appointment < ActiveRecord::Base
 	has_many :services, through: :appointment_services
 	validates(:hour, presence: true)
 	validates(:date, presence: true)
-	validates(:car_id, presence: true)
 end
