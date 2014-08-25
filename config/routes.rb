@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+
   resources :workplaces
 
   resources :appointments
@@ -10,11 +8,13 @@ Rails.application.routes.draw do
 
   resources :skills
 
+  resources :mechanics
+
   resources :clients do
     resources :cars
   end
 
-  resources :mechanics
+
 
   get 'auto_shop/home'
   devise_for :users

@@ -12,7 +12,7 @@
   <% end %>
     <div class="field">
     <%= f.label :name, "Available cars" %><br>
-    <%= f.collection_select :car_id, Car.all, :id, :number, :prompt => "Select a car" %>
+  <%= select("Cars", "name", options_for_select(Car.all.map{ |p| [p.number, p.id] }), {:prompt => 'Select a car...'}) %>
   </div>
   <div class="field">
     <%= f.label :hour %><br>
@@ -24,11 +24,11 @@
   </div>
   <div class="field">
     <%= f.label :workplace_id %><br>
-    <%= f.collection_select :workplace_id, Workplace.all, :id, :number, :prompt => "Select a workplace"%>
+    <%= select("Workplaces", "name", options_for_select(Workplace.all.map{ |p| [p.number, p.id] }), {:prompt => 'Select a workplace...'}) %>
   </div>
   <div class="field">
-    <%= f.label :name, "Appointments" %><br>
-    <%= f.collection_select :services, @services, :id, :name, :prompt => "Select a service" %> 
+    <%= f.label :name, "Service" %><br>
+    <%= select("Skills", "name", options_for_select(Skill.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a skill...'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :name, "Skills" %><br>
-    <%= f.collection_select :skills, @skills, :id, :name, :prompt => "Select a skill" %> 
+    <%= select("Skills", "name", options_for_select(Skill.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a skill...'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

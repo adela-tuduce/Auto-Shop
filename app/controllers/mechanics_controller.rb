@@ -26,7 +26,6 @@ class MechanicsController < ApplicationController
   # POST /mechanics.json
   def create
     @mechanic = Mechanic.new(mechanic_params)
-
     respond_to do |format|
       if @mechanic.save
         format.html { redirect_to @mechanic, notice: 'Mechanic was successfully created.' }
