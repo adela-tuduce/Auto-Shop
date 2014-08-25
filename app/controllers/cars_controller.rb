@@ -25,7 +25,7 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @client = Client.find(params[:client_id])
+    @client = Client.find(params[:id])
     @car = @client.cars.build(params[:car_params])
     respond_to do |format|
       if @car.save

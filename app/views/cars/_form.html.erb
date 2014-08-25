@@ -1,7 +1,6 @@
-Please fill in your car details, <h3><%= @clients.where(:client_id, params[:client_id]).name %></h3>
 <br>
 <br>
-<%= form_for(@car) do |f| %>
+<%= form_for @car, url: client_car_path( @client.id, @car) do |f| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
