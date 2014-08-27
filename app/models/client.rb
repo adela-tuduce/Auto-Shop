@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: clients
@@ -10,6 +11,8 @@
 #  updated_at   :datetime
 #
 
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
 class Client < ActiveRecord::Base
   validates(:name, presence: true)
   validates(:phone_number, presence: true)

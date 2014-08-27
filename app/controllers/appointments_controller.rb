@@ -1,6 +1,9 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
   before_action :appointment_duration, only: :create
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
 
   # GET /appointments
   # GET /appointments.json
@@ -11,7 +14,10 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
+<<<<<<< HEAD
     @appointment = Appointment.find(params[:id])
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   end
 
   # GET /appointments/new
@@ -29,6 +35,11 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
+<<<<<<< HEAD
+=======
+    @appointment = Appointment.new(appointment_params)
+
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
@@ -74,6 +85,7 @@ class AppointmentsController < ApplicationController
     def appointment_params
       params.require(:appointment).permit(:car_id, :hour, :date, :workplace_id)
     end
+<<<<<<< HEAD
 
     def appointment_duration 
       ok = 1
@@ -122,3 +134,6 @@ class AppointmentsController < ApplicationController
         end
     end
 end
+=======
+end
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57

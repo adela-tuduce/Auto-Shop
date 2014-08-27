@@ -27,9 +27,12 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+<<<<<<< HEAD
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     better_errors (2.0.0)
@@ -144,7 +147,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
   annotate
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   better_errors
   binding_of_caller
   bootstrap-sass (= 2.3.2.0)

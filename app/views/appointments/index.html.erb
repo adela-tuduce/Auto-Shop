@@ -7,7 +7,10 @@
       <th>Hour</th>
       <th>Date</th>
       <th>Workplace</th>
+<<<<<<< HEAD
       <th>Service</th>
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,10 +20,15 @@
       <tr>
         <td><%= appointment.car_id %></td>
         <td><%= appointment.hour %></td>
+<<<<<<< HEAD
         <td><%= appointment.workplace_id %></td>
         <td><% appointment.services.each do |service| %>
               <%= service.name %>
               <% end %></td>
+=======
+        <td><%= appointment.date %></td>
+        <td><%= appointment.workplace_id %></td>
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

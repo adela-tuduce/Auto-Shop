@@ -45,5 +45,8 @@ gem 'spring',        group: :development
  gem 'better_errors'
  gem 'meta_request'
  gem 'binding_of_caller'
+<<<<<<< HEAD
  gem 'annotate'
 
+=======
+>>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
