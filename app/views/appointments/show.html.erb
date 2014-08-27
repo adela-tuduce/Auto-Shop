@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @appointment.car_id %>
+</p>
+
+<p>
+  <strong>Hour:</strong>
+  <%= @appointment.hour %>
+</p>
+
+<p>
+  <strong>Workplace:</strong>
+  <%= @appointment.workplace_id %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <% @appointment.services.each do |service| %>
+  	<%= service.name %>
+  <% end %>
+
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

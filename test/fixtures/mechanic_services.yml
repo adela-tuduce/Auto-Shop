@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: mechanic_services
+#
+#  id          :integer          not null, primary key
+#  mechanic_id :integer
+#  service_id  :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mechanic_id: 1
+  service_id: 1
+
+two:
+  mechanic_id: 1
+  service_id: 1

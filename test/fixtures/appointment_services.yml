@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: appointment_services
+#
+#  id             :integer          not null, primary key
+#  appointment_id :integer
+#  service_id     :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment_id: 1
+  service_id: 1
+
+two:
+  appointment_id: 1
+  service_id: 1
