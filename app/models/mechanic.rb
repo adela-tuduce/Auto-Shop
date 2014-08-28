@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # == Schema Information
 #
 # Table name: mechanics
@@ -10,9 +10,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
-=======
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
 class Mechanic < ActiveRecord::Base
 	has_many :mechanic_services
 	has_many :services, through: :mechanic_services

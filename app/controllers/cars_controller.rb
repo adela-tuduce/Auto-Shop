@@ -5,11 +5,7 @@ class CarsController < ApplicationController
   # GET /cars.json
   def index
     @client = Client.find(params[:client_id])
-<<<<<<< HEAD
     @cars = @client.cars
-=======
-    @cars = Car.all
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   end
 
   # GET /cars/1
@@ -35,17 +31,14 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @client = Client.find(params[:client_id])
-<<<<<<< HEAD
     @car = @client.cars.build(car_params)
     respond_to do |format|
       if @car.save
         format.html { redirect_to client_cars_path(@client), notice: 'Car was successfully created.' }
-=======
     @car = @client.cars.build(params[:car_params])
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
         format.json { render :show, status: :created, location: @car }
       else
         format.html { render :new }

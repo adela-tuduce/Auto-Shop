@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # == Schema Information
 #
 # Table name: appointments
@@ -18,14 +18,4 @@ class Appointment < ActiveRecord::Base
 	has_many :appointment_services
 	has_many :services, through: :appointment_services
 	validates(:hour, presence: true)
-=======
-class Appointment < ActiveRecord::Base
-	belongs_to :client
-	has_one :workplace
-	has_many :appointment_services
-	has_one :car
-	has_many :services, through: :appointment_services
-	validates(:hour, presence: true)
-	validates(:date, presence: true)
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
 end

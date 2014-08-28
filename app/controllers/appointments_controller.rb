@@ -1,9 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
   before_action :appointment_duration, only: :create
-=======
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
 
   # GET /appointments
   # GET /appointments.json
@@ -14,10 +11,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
-<<<<<<< HEAD
     @appointment = Appointment.find(params[:id])
-=======
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   end
 
   # GET /appointments/new
@@ -35,11 +29,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-<<<<<<< HEAD
-=======
-    @appointment = Appointment.new(appointment_params)
-
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
@@ -85,28 +74,37 @@ class AppointmentsController < ApplicationController
     def appointment_params
       params.require(:appointment).permit(:car_id, :hour, :date, :workplace_id)
     end
-<<<<<<< HEAD
-
-    def appointment_duration 
+    def appointment_duration
+      @appointment = Appointment.new(appointment_params)
       ok = 1
       val = 1
-      @appointment = Appointment.new(appointment_params)
-      @service = Service.find(params[:appointment][:services])
-      @appointment.services << @service
-      @duration = @service.time
-      if(@duration > 60)
-        @duration += @duration/60 * 10
+      duration = 0
+      @service = Service.find(params[:appointment][:services]).uniq
+      workplace = @appointment.workplace_id
+      @service.each do |serv|
+        @appointment.services << serv
+        duration += serv.time
+      end
+      if(duration > 60)
+        duration += duration/60 * 10
       end
       
-      @end_time = @appointment.hour + @duration.minutes
+      end_time = @appointment.hour.to_i + duration.minutes
 
       @appointments = Appointment.all
       @appointments.each do |appointment|
-        overlap = [0, [Service.find(params[:appointment][:services]).time + appointment.hour.to_i, @end_time.to_i].min - [appointment.hour.to_i, @appointment.hour.to_i].max].max
-        if overlap/24/60 < Service.find(params[:appointment][:services]).time
-            ok = 0
+        serv_time = 0
+        @service_app = Service.find(params[:appointment][:services]).uniq
+        @service_app.each do |serv|
+          serv_time += serv.time
         end
-
+        
+        if @appointment.hour.to_i <= serv_time.minutes + appointment.hour.to_i && appointment.hour.to_i <= end_time
+          if check_workplace?(@appointment, workplace) == false
+            ok = 0
+            0/0
+          end
+        end
       end
       unless ok == 1
         flash.now[:notice] = "Appointment already taken!"
@@ -114,26 +112,19 @@ class AppointmentsController < ApplicationController
       end
     end
 
-
-
-    def appointment_delay
-       k = 1
-       param = 0
-       @appointments = Appointment.all
-       @appointments.each do |appointment|
-        if(Service.find(params[:appointment][:services]).time + appointment.hour.to_i - @appointment.hour.to_i < 15)
-          k = 0
-          if k == 0
-            param = Service.find(params[:appointment][:services]).time + appointment.hour.to_i - @appointment.hour.to_i
-          end
-        end
+    def check_workplace?(appointment, number)
+      check = 1
+      @appointments = Appointment.all
+      @appointments.each do |appointment|
+      if(number == appointment.workplace_id)
+        check = 0
       end
-      if k == 0
-          flash.now[:notice] = "15 minutes break! Try #{param} minutes later!"
-          render 'new'
-        end
+    end
+    if check == 1
+      return true
+    end
+    flash.now[:notice] = "Choose another Workplace!"
+    return false
     end
 end
-=======
-end
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
+

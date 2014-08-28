@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # == Schema Information
 #
 # Table name: cars
@@ -14,10 +14,6 @@
 
 class Car < ActiveRecord::Base
   belongs_to :client
-=======
-class Car < ActiveRecord::Base
-  has_one :client
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   validates(:number, presence: true)
   validates(:make, presence:true)
   validates(:model, presence:true)

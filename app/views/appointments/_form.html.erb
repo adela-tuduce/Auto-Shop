@@ -1,3 +1,9 @@
+<%= javascript_include_tag "application" %>
+    
+
+<% flash.each do |name, msg| %>
+  <h2><%= content_tag :p, msg if msg.is_a?(String) %></h2>
+<% end %>
 <%= form_for(@appointment) do |f| %>
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
@@ -12,44 +18,29 @@
   <% end %>
     <div class="field">
     <%= f.label :name, "Available cars" %><br>
-<<<<<<< HEAD
   <%= f.select "car_id", options_from_collection_for_select(Car.all, "id", "number"), prompt: "Select something" %>
-=======
-  <%= select("Cars", "name", options_for_select(Car.all.map{ |p| [p.number, p.id] }), {:prompt => 'Select a car...'}) %>
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
   </div>
   <div class="field">
     <%= f.label :hour %><br>
-    <%= f.time_select :hour %>
+    <%= f.datetime_select :hour %>
   </div>
   <div class="field">
-<<<<<<< HEAD
     <%= f.label :workplace_id %><br>
     <%= f.select "workplace_id", options_from_collection_for_select(Workplace.all, "id", "number"), prompt: "Select something" %>
   </div>
-  <div class="field">
+  <div class="field" >
     <%= f.label :name, "Service" %><br>
-    <%= f.select "services", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Select something" %>
-=======
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :workplace_id %><br>
-    <%= select("Workplaces", "name", options_for_select(Workplace.all.map{ |p| [p.number, p.id] }), {:prompt => 'Select a workplace...'}) %>
-  </div>
-  <div class="field">
-    <%= f.label :name, "Service" %><br>
-    <%= select("Service", "name", options_for_select(Service.all.map{ |p| [p.name, p.id] }), {:prompt => 'Select a service...'}) %>
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
-  </div>
+    <div id="selectService">
+    <%= select_tag :"appointment[services][]", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Select something" %>
+    </div>
+    <div id="newfield"></div>
+    </div><a id="add" class="btn btn-small btn-primary" href="javascript:addNew();">Add another service</a>
+    </br>
+    </br>
+    </br>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-<<<<<<< HEAD
-<% flash.each do |key, value| %>
-    <p class="alert alert-<%= key %>"><%= value %></p>
-<% end %>
-=======
->>>>>>> 7af8ec578802743010d6a88815332b5e7125bd57
+
+
