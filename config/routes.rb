@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     resources :cars
   end
 
-
-
   get 'auto_shop/home'
   devise_for :users
   root 'auto_shop#home'

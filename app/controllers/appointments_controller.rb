@@ -78,36 +78,41 @@ class AppointmentsController < ApplicationController
       @appointment = Appointment.new(appointment_params)
       ok = 1
       val = 1
+      @cost = 0
       duration = 0
-      @service = Service.find(params[:appointment][:services]).uniq
-      workplace = @appointment.workplace_id
-      @service.each do |serv|
-        @appointment.services << serv
-        duration += serv.time
-      end
-      if(duration > 60)
-        duration += duration/60 * 10
-      end
-      
-      end_time = @appointment.hour.to_i + duration.minutes
-
-      @appointments = Appointment.all
-      @appointments.each do |appointment|
-        serv_time = 0
-        @service_app = Service.find(params[:appointment][:services]).uniq
-        @service_app.each do |serv|
-          serv_time += serv.time
+      if @appointment.hour > Time.now
+        @service = Service.find(params[:appointment][:services]).uniq
+        workplace = @appointment.workplace_id
+        @service.each do |serv|
+          @appointment.services << serv
+          duration += serv.time
         end
-        
-        if @appointment.hour.to_i <= serv_time.minutes + appointment.hour.to_i && appointment.hour.to_i <= end_time
-          if check_workplace?(@appointment, workplace) == false
-            ok = 0
-            0/0
+        if(duration > 60)
+          duration += duration/60 * 10
+        end
+        duration += 15
+      
+        end_time = @appointment.hour.to_i + duration.minutes
+
+        @appointments = Appointment.all
+        @appointments.each do |appointment|
+          serv_time = 15
+          @service_app = Service.find(params[:appointment][:services]).uniq
+          @service_app.each do |serv|
+            serv_time += serv.time
+          end
+          if @appointment.hour.to_i <= serv_time.minutes + appointment.hour.to_i && appointment.hour.to_i <= end_time
+            if check_workplace?(@appointment, workplace) == false
+              ok = 0
+            end 
           end
         end
-      end
-      unless ok == 1
-        flash.now[:notice] = "Appointment already taken!"
+        unless ok == 1
+          flash.now[:notice] = "Appointment already taken!Try another hour!"
+          render 'new'
+        end
+      else
+        flash.now[:notice] = "You can't create past appointments!"
         render 'new'
       end
     end

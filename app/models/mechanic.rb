@@ -16,4 +16,6 @@ class Mechanic < ActiveRecord::Base
 	validates(:name, presence: true)
 	validates(:age, presence: true)
 	validates(:experience, presence: true)
+	belongs_to :appointment
+	default_scope  { order(:experience) }
 end

@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container-fluid">
+  <div class="row">
 <p>
   <strong>Car:</strong>
   <%= @appointment.car_id %>
 </p>
 
 <p>
-  <strong>Hour:</strong>
+  <strong>Appointment hour:</strong>
   <%= @appointment.hour %>
 </p>
 
@@ -17,12 +18,16 @@
 
 <p>
   <strong>Service:</strong>
+  <% price = 0 %>
   <% @appointment.services.each do |service| %>
-  	<%= service.name %> 
-    </br>
+  	<%= service.name %> |  
+    <% price += service.price %>
   <% end %>
-
+  </br>
+  <p><b> <%="Total price is #{price}$."%><b></p>
 </p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+</div>
+</div>
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: "btn btn-xs" %> 
+<%= link_to 'Back', appointments_path, class: "btn btn-xs" %>

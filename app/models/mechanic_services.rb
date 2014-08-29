@@ -10,4 +10,6 @@
 #  updated_at  :datetime
 #
 class MechanicServices < ActiveRecord::Base
+	belongs_to :mechanic
+	belongs_to :services
 end

@@ -17,5 +17,6 @@ class Appointment < ActiveRecord::Base
 	has_one :car
 	has_many :appointment_services
 	has_many :services, through: :appointment_services
+	has_many :mechanics
 	validates(:hour, presence: true)
 end

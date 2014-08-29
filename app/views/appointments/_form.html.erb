@@ -1,9 +1,3 @@
-<%= javascript_include_tag "application" %>
-    
-
-<% flash.each do |name, msg| %>
-  <h2><%= content_tag :p, msg if msg.is_a?(String) %></h2>
-<% end %>
 <%= form_for(@appointment) do |f| %>
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
@@ -16,9 +10,9 @@
       </ul>
     </div>
   <% end %>
-    <div class="field">
+  <div class="field">
     <%= f.label :name, "Available cars" %><br>
-  <%= f.select "car_id", options_from_collection_for_select(Car.all, "id", "number"), prompt: "Select something" %>
+    <%= f.select "car_id", options_from_collection_for_select(Car.all, "id", "number"), prompt: "Select something" %>
   </div>
   <div class="field">
     <%= f.label :hour %><br>
@@ -31,13 +25,14 @@
   <div class="field" >
     <%= f.label :name, "Service" %><br>
     <div id="selectService">
-    <%= select_tag :"appointment[services][]", options_from_collection_for_select(Service.all, "id", "name"), prompt: "Select something" %>
+    <%= select_tag :"appointment[services][]", options_from_collection_for_select(Service.all, "id", "name"), :selected => Service.first %>
     </div>
     <div id="newfield"></div>
-    </div><a id="add" class="btn btn-small btn-primary" href="javascript:addNew();">Add another service</a>
-    </br>
-    </br>
-    </br>
+  </div>
+  <a id="add" class="btn btn-small btn-primary" href="javascript:addNew();">Add another service</a>
+  </br>
+  </br>
+  </br>
   <div class="actions">
     <%= f.submit %>
   </div>
